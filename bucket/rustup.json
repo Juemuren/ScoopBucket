@@ -5,8 +5,10 @@
     "license": "MIT|Apache-2.0",
     "notes": [
         "This package defaults to using none toolchain in new installs.",
+        "Use \"rustup set default-host <host-triplet>\" to set default host",
+        "Refer to https://rust-lang.github.io/rustup/installation/windows.html",
         "Use \"rustup toolchain install <toolchain-spec>\" to install toolchain.",
-        "Refer to https://rust-lang.github.io/rustup/concepts/toolchains.html#toolchain-specification"
+        "Refer to https://rust-lang.github.io/rustup/concepts/toolchains.html"
     ],
     "architecture": {
         "64bit": {
@@ -26,7 +28,7 @@
         "script": [
             "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
             "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
-            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args @('--default-toolchain none', '-y', '--no-modify-path') | Out-Null"
+            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args @('--default-toolchain', 'none', '-y', '--no-modify-path') | Out-Null"
         ]
     },
     "env_add_path": ".cargo\\bin",
