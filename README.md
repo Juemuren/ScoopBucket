@@ -11,6 +11,7 @@ Because I was dissatisfied with the installation method of some software in the 
 - juliaup
 - rustup
 - postgresql
+- miktex
 - Sarasa-Mono-SC
 
 ## How do I install these manifests?
