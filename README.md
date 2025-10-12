@@ -8,15 +8,23 @@ Because I was dissatisfied with the installation method of some software in the 
 
 ## Available manifests
 
+### command-line tools
+
+- git
+- graphviz
 - juliaup
-- rustup
-- postgresql
 - miktex
+- mise
+- postgresql
+- rustup
+
+### nerd-fonts
+
 - Sarasa-Mono-SC
 
 ## How do I install these manifests?
 
 ```pwsh
-scoop bucket add <bucketname> https://github.com/Juemuren/ScoopBucket
-scoop install <bucketname>/<manifestname>
+scoop bucket add <bucket-name> https://github.com/Juemuren/ScoopBucket
+scoop install <bucket-name>/<manifest-name>
 ```
