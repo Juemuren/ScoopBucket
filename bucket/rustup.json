@@ -6,9 +6,7 @@
     "notes": [
         "This package defaults to using none toolchain in new installs.",
         "Use \"rustup set default-host <host-triplet>\" to set default host",
-        "Refer to https://rust-lang.github.io/rustup/installation/windows.html",
-        "Use \"rustup toolchain install <toolchain-spec>\" to install toolchain.",
-        "Refer to https://rust-lang.github.io/rustup/concepts/toolchains.html"
+        "Use \"rustup toolchain install <toolchain-spec>\" to install toolchain."
     ],
     "architecture": {
         "64bit": {
