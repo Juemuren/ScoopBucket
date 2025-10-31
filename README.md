@@ -15,6 +15,7 @@ Because I was dissatisfied with the installation method of some software in the 
 - miktex
 - mise
 - postgresql
+- quarto
 - rustup
 
 ### nerd-fonts
