@@ -12,9 +12,9 @@ Because I was dissatisfied with the installation method of some software in the 
 
 - graphviz
 - juliaup
+- lazygit
 - miktex
 - mise
-- postgresql
 - quarto
 - rustup
 
