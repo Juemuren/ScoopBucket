@@ -16,7 +16,6 @@ Because I was dissatisfied with the installation method of some software in the 
 - miktex
 - mise
 - quarto
-- rustup
 
 ### nerd-fonts
 
