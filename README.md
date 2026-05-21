@@ -20,6 +20,7 @@ Because I was dissatisfied with the installation method of some software in the 
 ### nerd-fonts
 
 - Sarasa-Mono-SC
+- Sarasa-Term-SC
 
 ## How do I install these manifests?
 
