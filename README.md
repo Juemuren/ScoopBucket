@@ -2,29 +2,13 @@
 
 [![Tests](https://github.com/Juemuren/ScoopBucket/actions/workflows/ci.yml/badge.svg)](https://github.com/Juemuren/ScoopBucket/actions/workflows/ci.yml) [![Excavator](https://github.com/Juemuren/ScoopBucket/actions/workflows/excavator.yml/badge.svg)](https://github.com/Juemuren/ScoopBucket/actions/workflows/excavator.yml)
 
-My bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
+A bucket for [Scoop](https://scoop.sh).
 
-Because I was dissatisfied with the installation method of some software in the **official bucket**, I made this bucket for my own use.
-
-## Available manifests
-
-### command-line tools
-
-- graphviz
-- juliaup
-- miktex
-- mise
-- pixi
-- quarto
-
-### nerd-fonts
-
-- Sarasa-Mono-SC
-- Sarasa-Term-SC
-
-## How do I install these manifests?
+## How to use
 
 ```pwsh
+# Add this bucket with a name you like
 scoop bucket add <bucket-name> https://github.com/Juemuren/ScoopBucket
+# Install manifest in this bucket
 scoop install <bucket-name>/<manifest-name>
 ```
