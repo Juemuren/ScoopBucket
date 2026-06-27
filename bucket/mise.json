@@ -14,7 +14,7 @@
         }
     },
     "extract_dir": "mise",
-    "bin": "bin/mise.exe",
+    "bin": "bin\\mise.exe",
     "env_set": {
         "MISE_DATA_DIR": "$persist_dir\\data"
     },
