@@ -6,10 +6,6 @@
         "identifier": "GPL-2.0-only",
         "url": "https://github.com/git-for-windows/git/blob/HEAD/COPYING"
     },
-    "notes": [
-        "To set Git Credential Manager Core for portable Git, please execute the following command:",
-        "git config --system credential.helper manager"
-    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.3/PortableGit-2.55.0.3-64-bit.7z.exe#/dl.7z",
@@ -20,17 +16,6 @@
             "hash": "3bf26b94d9399b16a890776e468334f501742861576cbcdea2d9134643c374bd"
         }
     },
-    "pre_install": [
-        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing the existing config file.",
-        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\gitconfig'",
-        "$config_path_persisted = Join-Path -Path $persist_dir -ChildPath 'etc\\gitconfig'",
-        "if (Test-Path -LiteralPath $config_path_persisted -PathType Leaf) {",
-        "    info \"Restoring system-level config from $config_path_persisted...\"",
-        "    Copy-Item -Path $config_path_persisted -Destination $config_path -Force",
-        "    info \"Adjusting paths in $config_path...\"",
-        "    (Get-Content -Path $config_path -Encoding UTF8) -replace '(?<=git/)[\\d.]+(?=/)', $version | Set-Content -Path $config_path -Encoding UTF8",
-        "}"
-    ],
     "env_set": {
         "GIT_INSTALL_ROOT": "$dir"
     },
@@ -42,15 +27,8 @@
             "git-bash"
         ]
     ],
-    "pre_uninstall": [
-        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing the existing config file.",
-        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\gitconfig'",
-        "$config_path_persisted = Join-Path -Path $persist_dir -ChildPath 'etc\\gitconfig'",
-        "if (Test-Path -LiteralPath $config_path -PathType Leaf) {",
-        "    ensure (Split-Path -Path $config_path_persisted -Parent) | Out-Null",
-        "    info \"Saving system-level config to $config_path_persisted...\"",
-        "    Copy-Item -Path $config_path -Destination $config_path_persisted -Force",
-        "}"
+    "post_install": [
+        "git config --system credential.helper manager"
     ],
     "checkver": {
         "github": "https://api.github.com/repos/git-for-windows/git/releases/latest",
