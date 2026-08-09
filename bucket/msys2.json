@@ -1,10 +1,8 @@
 {
-    "##": "64-bit version is able to build both 32-bit and 64-bit packages",
     "version": "2026-06-11",
     "description": "A software distro and building platform for Windows.",
     "homepage": "http://www.msys2.org/",
     "license": "GPL-2.0-only|BSD-3-Clause",
-    "notes": "Please run 'msys2' now for the MSYS2 setup to complete!",
     "architecture": {
         "64bit": {
             "url": "https://github.com/msys2/msys2-installer/releases/download/2026-06-11/msys2-base-x86_64-20260611.tar.xz",
@@ -24,6 +22,11 @@
         "MSYS_INSTALL_ROOT": "$dir"
     },
     "persist": "home",
+    "post_install": [
+        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\nsswitch.conf'",
+        "(Get-Content $config_path) -replace '^db_home:.*$', 'db_home: windows' | Set-Content $config_path -Encoding ascii",
+        "msys2 -c 'pacman --noconfirm -S zsh'"
+    ],
     "checkver": {
         "url": "https://github.com/msys2/msys2-installer/releases",
         "regex": "/releases/tag/(?<version>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}))"
