@@ -17,7 +17,7 @@
         }
     },
     "env_set": {
-        "GIT_INSTALL_ROOT": "$dir"
+        "GIT_ROOT": "$dir"
     },
     "bin": [
         "bin\\sh.exe",
