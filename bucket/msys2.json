@@ -3,6 +3,9 @@
     "description": "A software distro and building platform for Windows.",
     "homepage": "http://www.msys2.org/",
     "license": "GPL-2.0-only|BSD-3-Clause",
+    "notes": [
+        "Setup: $dir\\setup.ps1"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/msys2/msys2-installer/releases/download/2026-06-11/msys2-base-x86_64-20260611.tar.xz",
@@ -15,17 +18,42 @@
             "msys2_shell.cmd",
             "msys2",
             "-defterm -here -no-start -full-path"
+        ],
+        [
+            "msys2_shell.cmd",
+            "clang64",
+            "-clang64 -defterm -here -no-start -full-path"
+        ],
+        [
+            "msys2_shell.cmd",
+            "mingw64",
+            "-mingw64 -defterm -here -no-start -full-path"
+        ],
+        [
+            "msys2_shell.cmd",
+            "ucrt64",
+            "-ucrt64 -defterm -here -no-start -full-path"
         ]
     ],
     "env_set": {
         "MSYS": "winsymlinks:nativestrict",
         "MSYS_INSTALL_ROOT": "$dir"
     },
-    "persist": "home",
+    "persist": [
+        "home",
+        "etc",
+        "dev",
+        "tmp",
+        "opt",
+        "usr",
+        "var",
+        "clang64",
+        "mingw64",
+        "ucrt64"
+    ],
     "post_install": [
-        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\nsswitch.conf'",
-        "(Get-Content $config_path) -replace '^db_home:.*$', 'db_home: windows' | Set-Content $config_path -Encoding ascii",
-        "msys2 -c 'pacman --noconfirm -S zsh'"
+        "$scriptsdir = \"$bucketsdir\\$bucket\\scripts\\$app\"",
+        "Copy-Item \"$scriptsdir\\setup.ps1\" \"$dir\\setup.ps1\""
     ],
     "checkver": {
         "url": "https://github.com/msys2/msys2-installer/releases",
