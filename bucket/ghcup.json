@@ -4,9 +4,7 @@
     "homepage": "https://www.haskell.org/ghcup",
     "license": "LGPL-v3",
     "notes": [
-        "cabal user-config update --augment \"extra-include-dirs: `\"$env:GHCUP_MSYS2\\mingw64\\include`\"\"",
-        "cabal user-config update --augment \"extra-lib-dirs: `\"$env:GHCUP_MSYS2\\mingw64\\lib`\"\"",
-        "cabal user-config update --augment \"extra-prog-path: `\"$env:GHCUP_INSTALL_BASE_PREFIX\\ghcup\\bin`\", `\"$env:GHCUP_INSTALL_BASE_PREFIX\\.cabal\\bin`\", `\"$env:GHCUP_MSYS2\\mingw64\\bin`\", `\"$env:GHCUP_MSYS2\\usr\\bin`\"\""
+        "Setup: $dir\\setup.ps1"
     ],
     "depends": "msys2",
     "architecture": {
@@ -16,15 +14,19 @@
         }
     },
     "env_set": {
-        "CABAL_DIR": "$dir\\.cabal",
+        "CABAL_DIR": "$dir\\cabal",
         "GHCUP_INSTALL_BASE_PREFIX": "$dir",
         "GHCUP_MSYS2": "$scoopdir\\apps\\msys2\\current"
     },
     "env_add_path": "ghcup\\bin",
     "bin": "ghcup.exe",
     "persist": [
-        ".cabal",
+        "cabal",
         "ghcup"
+    ],
+    "post_install": [
+        "$scriptsdir = \"$bucketsdir\\$bucket\\scripts\\$app\"",
+        "Copy-Item \"$scriptsdir\\setup.ps1\" \"$dir\\setup.ps1\""
     ],
     "checkver": {
         "github": "https://github.com/haskell/ghcup-hs"
