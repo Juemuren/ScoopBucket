@@ -6,7 +6,7 @@
     "notes": [
         "Setup: $dir\\setup.ps1"
     ],
-    "depends": "msys2",
+    "depends": "local/msys2",
     "architecture": {
         "64bit": {
             "url": "https://github.com/haskell/ghcup-hs/releases/download/v0.2.6.2/x86_64-mingw64-ghcup-0.2.6.2.exe#/ghcup.exe",
@@ -16,7 +16,7 @@
     "env_set": {
         "CABAL_DIR": "$dir\\cabal",
         "GHCUP_INSTALL_BASE_PREFIX": "$dir",
-        "GHCUP_MSYS2": "$scoopdir\\apps\\msys2\\current"
+        "GHCUP_MSYS2": "$env:MSYS_ROOT"
     },
     "env_add_path": "ghcup\\bin",
     "bin": "ghcup.exe",
