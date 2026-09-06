@@ -41,8 +41,7 @@
     },
     "persist": "msys64",
     "post_install": [
-        "$scriptsdir = \"$bucketsdir\\$bucket\\scripts\\$app\"",
-        "Copy-Item \"$scriptsdir\\setup.ps1\" \"$dir\\setup.ps1\""
+        "& \"$bucketsdir\\$bucket\\scripts\\_common\\Copy-AppScripts.ps1\" -Source \"$bucketsdir\\$bucket\\scripts\\$app\" -Destination $dir"
     ],
     "checkver": {
         "url": "https://github.com/msys2/msys2-installer/releases",

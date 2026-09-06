@@ -25,8 +25,7 @@
         "ghcup"
     ],
     "post_install": [
-        "$scriptsdir = \"$bucketsdir\\$bucket\\scripts\\$app\"",
-        "Copy-Item \"$scriptsdir\\setup.ps1\" \"$dir\\setup.ps1\""
+        "& \"$bucketsdir\\$bucket\\scripts\\_common\\Copy-AppScripts.ps1\" -Source \"$bucketsdir\\$bucket\\scripts\\$app\" -Destination $dir"
     ],
     "checkver": {
         "github": "https://github.com/haskell/ghcup-hs"
