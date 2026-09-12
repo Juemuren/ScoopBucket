@@ -1,15 +1,25 @@
-ghcup install ghc && ghcup set ghc
-ghcup install hls && ghcup set hls
-ghcup install cabal && ghcup set cabal
-ghcup install stack && ghcup set stack
+param(
+    [switch]$ConfigureOnly
+)
 
-$extra_include_dirs = "`"$env:GHCUP_MSYS2\mingw64\include`""
-$extra_lib_dirs = "`"$env:GHCUP_MSYS2\mingw64\lib`""
+if (!$ConfigureOnly) {
+    ghcup install ghc && ghcup set ghc
+    ghcup install hls && ghcup set hls
+    ghcup install cabal && ghcup set cabal
+    ghcup install stack && ghcup set stack
+}
+
+# Quoted Cabal paths must not contain unescaped Windows backslashes.
+$msys_path = $env:GHCUP_MSYS2.Replace('\', '/')
+$ghcup_path = $env:GHCUP_INSTALL_BASE_PREFIX.Replace('\', '/')
+$cabal_path = $env:CABAL_DIR.Replace('\', '/')
+$extra_include_dirs = "`"$msys_path/mingw64/include`""
+$extra_lib_dirs = "`"$msys_path/mingw64/lib`""
 $extra_prog_path = @(
-    "$env:GHCUP_INSTALL_BASE_PREFIX\ghcup\bin"
-    "$env:CABAL_DIR\bin"
-    "$env:GHCUP_MSYS2\mingw64\bin"
-    "$env:GHCUP_MSYS2\usr\bin"
+    "$ghcup_path/ghcup/bin"
+    "$cabal_path/bin"
+    "$msys_path/mingw64/bin"
+    "$msys_path/usr/bin"
 ).ForEach({ "`"$_`"" }) -join ', '
 
 cabal user-config update --augment "extra-include-dirs: $extra_include_dirs"
