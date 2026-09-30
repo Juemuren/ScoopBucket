@@ -3,10 +3,16 @@
     "description": "A lightweight, cross-platform, portable, and easy-to-maintain LaTeX distribution based on TeX Live.",
     "homepage": "https://yihui.org/tinytex/",
     "license": "GPL-2.0-only",
+    "notes": [
+        "Update: $dir\\update.ps1"
+    ],
     "url": "https://github.com/rstudio/tinytex-releases/releases/download/v2026.09/TinyTeX-0-windows-v2026.09.exe#/dl.7z",
     "hash": "d06903c499b0e4921868aaf71cebce37b6eb19bd0d9e251981149caf8c4e189e",
     "extract_dir": "TinyTeX",
-    "env_add_path": "bin\\windows",
+    "extract_to": "tinytex",
+    "env_add_path": "tinytex\\bin\\windows",
+    "persist": "tinytex",
+    "post_install": "& \"$bucketsdir\\$bucket\\scripts\\_common\\Copy-AppScripts.ps1\" -Source \"$bucketsdir\\$bucket\\scripts\\$app\" -Destination $dir",
     "checkver": {
         "github": "https://github.com/rstudio/tinytex-releases"
     },
