@@ -28,7 +28,7 @@
         ]
     ],
     "post_install": [
-        "& \"$dir\\post-install.bat\"",
+        "Start-Process -FilePath \"$dir\\post-install.bat\" -WorkingDirectory $dir -Wait -NoNewWindow",
         "& \"$dir\\bin\\git.exe\" config --system credential.helper manager"
     ],
     "checkver": {
