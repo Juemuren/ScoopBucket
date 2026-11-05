@@ -18,7 +18,10 @@
         "GHCUP_INSTALL_BASE_PREFIX": "$dir",
         "GHCUP_MSYS2": "$env:MSYS_ROOT"
     },
-    "env_add_path": "ghcup\\bin",
+    "env_add_path": [
+        "ghcup\\bin",
+        "cabal\\bin"
+    ],
     "bin": "ghcup.exe",
     "persist": [
         "cabal",
